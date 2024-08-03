@@ -5,5 +5,5 @@ from django.http import HttpResponse
 def index(request):
     return HttpResponse("Test Page. Your blog index pages.")
 
-def detial(request):
-    return HttpResponse("Test Page. Your Detial page.")
+def detial(request,post_id):
+    return HttpResponse(f"Test Page. Your Detial page and DP testing. ID is {post_id}")
