@@ -32,11 +32,12 @@ def detial(request,slug):
 
     try:
         post = Post.objects.get(slug = slug)
+        related_posts = Post.objects.filter(category = post.category).exclude(pk=post.id)
 
     except Post.DoesNotExist:
         raise Http404('Post Does not Exist!')
 
-    return render(request,'techblog/detial.html',{'post':post})
+    return render(request,'techblog/detial.html',{'post':post,'related_posts':related_posts})
 
 def old_url_redirect(request):
     return redirect(reverse('techblog:new_page_url'))
