@@ -19,7 +19,7 @@
                                     <h5 class="card-title">{{post.title}}</h5>
                                     <p class="card-text">{{post.content | truncatechars:100}}</p>
                                     <div class="d-flex justify-content-between">
-                                            <a href="{% url 'techblog:detial' post_id=post.id %}">Read More</a>
+                                            <a href="{% url 'techblog:detial' slug=post.slug %}">Read More</a>
                                         <a class="text-decoration-none text-dark fw-bold" href="#">Technology</a>
                                     </div>
                                 </div>

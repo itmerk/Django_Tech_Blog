@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.urls import reverse
 import logging
 from .models import Post
+from django.http import Http404
 
 # Create your views here.
 #posts = [
@@ -16,18 +17,25 @@ from .models import Post
 
 def index(request):
     techblog_title = "Latest Tech updates"
+    
     # Getting data from post model
     posts = Post.objects.all()
     return render(request,'techblog/index.html',{"techblog_title": techblog_title, 'posts': posts})
 
-def detial(request,post_id):
+def detial(request,slug):
     # For static data
     # post = next((item for item in posts if item['id'] == int(post_id)),None)
     # logger = logging.getLogger("TESTING")
     # logger.debug(f'post variable is {post}')
 
     # Getting data from model by post id
-    post = Post.objects.get(pk=post_id)
+
+    try:
+        post = Post.objects.get(slug = slug)
+
+    except Post.DoesNotExist:
+        raise Http404('Post Does not Exist!')
+
     return render(request,'techblog/detial.html',{'post':post})
 
 def old_url_redirect(request):
