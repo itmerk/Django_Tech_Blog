@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.urls import reverse
 import logging
 
+
+# Create your views here.
 posts = [
         {'id':1,'title':'Post 1', 'content': 'Content of post 1'},
         {'id':2,'title':'Post 2', 'content': 'Content of post 2'},
@@ -12,7 +14,6 @@ posts = [
         {'id':6,'title':'Post 6', 'content': 'Content of post 6'}
     ]
 
-# Create your views here.
 def index(request):
     techblog_title = "Latest Tech updates"
     return render(request,'techblog/index.html',{"techblog_title": techblog_title, 'posts': posts})
