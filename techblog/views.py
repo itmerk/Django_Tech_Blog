@@ -6,6 +6,7 @@ from .models import Post,Aboutus
 from django.http import Http404
 from django.core.paginator import Paginator
 from .forms import ContactForm
+from .utils import get_chatgpt_response
 
 # Create your views here.
 #posts = [
@@ -24,7 +25,7 @@ def index(request):
     all_posts = Post.objects.all()
 
     # Paginating
-    paginator = Paginator(all_posts,5)
+    paginator = Paginator(all_posts,6)
     page_no = request.GET.get('page')
     page_object = paginator.get_page(page_no)
 
@@ -74,3 +75,11 @@ def contact_view(request):
 def about_view(request):
     about_content = Aboutus.objects.first().content
     return render(request,'techblog/about.html',{'about_content':about_content})
+
+def chat_view(request):
+    response = ""
+    if request.method == "POST":
+        user_input = request.POST.get('user_input', '')
+        response = get_chatgpt_response(user_input)
+    
+    return render(request, 'techblog/chat.html', {'response': response})

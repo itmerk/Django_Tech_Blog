@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat with GPT</title>
+</head>
+<body>
+    <h1>Chat with ChatGPT</h1>
+    <form method="post">
+        {% csrf_token %}
+        <textarea name="user_input" rows="4" cols="50"></textarea><br>
+        <button type="submit">Send</button>
+    </form>
+    {% if response %}
+        <h2>Response:</h2>
+        <p>{{ response }}</p>
+    {% endif %}
+</body>
+</html>
