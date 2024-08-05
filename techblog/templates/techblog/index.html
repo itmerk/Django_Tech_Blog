@@ -12,14 +12,14 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <img style="height:300; width:300;" src="{{post.img_url}}" class="img-fluid" alt="...">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                    <img style="height: 150px; width: 200px; object-fit: cover;" src="{{post.img_url}}" class="img-fluid" alt="...">
                                 </div>
                                 <div class="col-md-8">
                                     <h5 class="card-title">{{post.title}}</h5>
                                     <p class="card-text">{{post.content|truncatechars:50}}</p>
                                     <div class="d-flex justify-content-between">
-                                        <a href="{% url 'techblog:detial' slug=post.slug %}">Read More</a>
+                                        <a href="{% url 'techblog:detial' slug=post.slug %}" class="btn btn-primary">Read More</a>
                                         <a class="text-decoration-none text-dark fw-bold" href="#">{{post.category.name}}</a>
                                     </div>
                                 </div>
@@ -27,6 +27,7 @@
                         </div>
                     </div>
                 </div>
+                
                 {% endfor %}
                 <div class="col-12 my-3">
                     {% if page_object.has_other_pages %}

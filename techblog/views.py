@@ -24,7 +24,7 @@ def index(request):
     all_posts = Post.objects.all()
 
     # Paginating
-    paginator = Paginator(all_posts,6)
+    paginator = Paginator(all_posts,5)
     page_no = request.GET.get('page')
     page_object = paginator.get_page(page_no)
 
