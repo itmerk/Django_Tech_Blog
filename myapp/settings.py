@@ -33,6 +33,8 @@ ALLOWED_HOSTS = [
 
 # Application definition
 
+OPENAI_API_KEY = 'sk-HIsoYzdy7E4KwslOShchEOO7IJlTu-J5WPDPgcKiHlT3BlbkFJ9b2JfAQNktAcDlrYp2lAVYZUEQIvY16ENwoVW0XgsA'
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
